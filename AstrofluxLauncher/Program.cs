@@ -164,6 +164,8 @@ namespace AstrofluxLauncher
             string steamAstrofluxPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Steam", "steamapps", "common", "Astroflux");
             string steamAstrofluxSwf = Path.Combine(steamAstrofluxPath, "Astroflux.swf");
             string itchAstrofluxPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Astroflux");
+            if (!Directory.Exists(itchAstrofluxPath))
+                itchAstrofluxPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Astroflux");
             string itchAstrofluxSwf = Path.Combine(itchAstrofluxPath, "AstrofluxDesktop.swf");
             string itchAstrofluxExe = Path.Combine(itchAstrofluxPath, "Astroflux.exe");
 
@@ -289,7 +291,7 @@ namespace AstrofluxLauncher
                         if (!NativeFileDialog.OpenDialog([
                             new NativeFileDialog.Filter() {
                                 Name = "SWF File",
-                                Extensions = ["*.swf"]
+                                Extensions = ["swf"]
                             }
                         ], null, out string? newClientSwf) || !File.Exists(newClientSwf)) {
                             goto askSelectClient;
