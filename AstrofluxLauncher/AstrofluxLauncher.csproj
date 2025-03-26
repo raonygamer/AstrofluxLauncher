@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="xcopy $(SolutionDir)ffdec\ $(OutDir)ffdec\ /q /s /e /y" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="SharpFileDialog" Version="2.0.0" />
+  </ItemGroup>
+
 </Project>
