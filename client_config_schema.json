@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "author": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "source": {
+            "type": "object",
+            "properties": {
+                "remote": {
+                    "type": "boolean"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "filename": {
+                    "type": "string"
+                }
+            },
+            "required": ["remote"],
+            "dependencies": {
+                "remote": {
+                    "oneOf": [
+                        {
+                            "properties": {
+                                "remote": {
+                                    "enum": [true]
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "format": "uri"
+                                }
+                            },
+                            "required": ["url"]
+                        },
+                        {
+                            "properties": {
+                                "remote": {
+                                    "enum": [false]
+                                },
+                                "filename": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": ["filename"]
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "required": ["author", "name", "description", "version", "source"]
+}
