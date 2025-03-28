@@ -99,12 +99,15 @@ namespace AstrofluxLauncher.UI {
 
         public Action? TriggerRedrawFunction { get; set; } = null;
 
-        public Item(string id = "", string name = "", bool disabled = false, bool selectable = true, Action<ItemSelector, Item>? selectAction = null) {
+        public Dictionary<string, object> Data;
+
+        public Item(string id = "", string name = "", bool disabled = false, bool selectable = true, Action<ItemSelector, Item>? selectAction = null, Dictionary<string, object>? data = null) {
             Id = id;
             Name = name;
             Disabled = disabled;
             Selectable = selectable;
             SelectAction = selectAction ?? SelectAction;
+            Data = data ??= [];
         }
 
         public virtual void Draw(ItemSelector selector, int itemIndex) {

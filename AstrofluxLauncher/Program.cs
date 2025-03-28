@@ -27,6 +27,7 @@ namespace AstrofluxLauncher
         public const string Licence = "GPLv3";
         public const string Repository = "https://github.com/raonygamer/AstrofluxLauncher";
         public const string Branch = "dev";
+        public const string AstrofluxGameId = "489560";
 
         public static readonly string DefaultCrcFileUrl = $"https://raw.githubusercontent.com/raonygamer/AstrofluxLauncher/refs/heads/{Branch}/default_crc.json";
         public static readonly string PatchedItchFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{Branch}/Loaders/AstrofluxDesktop/AstrofluxDesktop.swf";
@@ -42,6 +43,18 @@ namespace AstrofluxLauncher
 
         public int DrawingStart = 0;
 
+        public bool SteamPatchAvailable { get; private set; }
+        public bool ItchPatchAvailable { get; private set; }
+        public Dictionary<string, string>? DefaultChecksums { get; private set; }
+
+        public string SteamLoaderSwfFile { get; private set; } = "";
+        public string ItchLoaderSwfFile { get; private set; } = "";
+        public string LauncherConfigPath { get; private set; } = "";
+        public Config CurrentConfig { get; private set; } = new Config();
+
+        public static string LegacyLauncherClientPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AstrofluxClients");
+        public static string LauncherClientPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData\\Roaming\\AstrofluxLauncher\\Clients");
+
         public async Task<int> Start() {
             Console.CursorVisible = false;
             CheckElevation();
@@ -52,33 +65,34 @@ namespace AstrofluxLauncher
             string launcherPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData\\Roaming\\AstrofluxLauncher");
             Directory.CreateDirectory(launcherPath);
 
-            string launcherConfigPath = Path.Combine(launcherPath, "config.json");
-            if (!File.Exists(launcherConfigPath)) {
-                File.WriteAllText(launcherConfigPath, JsonConvert.SerializeObject(new Config(), Formatting.Indented));
+            LauncherConfigPath = Path.Combine(launcherPath, "config.json");
+            if (!File.Exists(LauncherConfigPath)) {
+                File.WriteAllText(LauncherConfigPath, JsonConvert.SerializeObject(CurrentConfig, Formatting.Indented));
+            }
+            LoadConfig();
+
+            SteamLoaderSwfFile = Path.Combine(tempPath, "CustomLoaders\\Steam\\Astroflux.swf");
+            string steamLoaderSwfPath = Path.GetDirectoryName(SteamLoaderSwfFile)!;
+            Directory.CreateDirectory(steamLoaderSwfPath);
+            SteamPatchAvailable = await Utils.Utils.DownloadFileAsync(PatchedSteamFileUrl, SteamLoaderSwfFile);
+
+            ItchLoaderSwfFile = Path.Combine(tempPath, "CustomLoaders\\Itch\\AstrofluxDesktop.swf");
+            string itchLoaderSwfPath = Path.GetDirectoryName(ItchLoaderSwfFile)!;
+            Directory.CreateDirectory(itchLoaderSwfPath);
+            ItchPatchAvailable = await Utils.Utils.DownloadFileAsync(PatchedItchFileUrl, ItchLoaderSwfFile);
+
+            string defaultCrcFile = Path.Combine(tempPath, "default_crc.json");
+            if (!await Utils.Utils.DownloadFileAsync(DefaultCrcFileUrl, defaultCrcFile)) {
+                Log.Error("Failed to download default_crc.json file from repository.");
+                ExitGracefully();
+                return 0;
             }
 
-            string steamLoaderSwfFile = Path.Combine(tempPath, "CustomLoaders\\Steam\\Astroflux.swf");
-            string steamLoaderSwfPath = Path.GetDirectoryName(steamLoaderSwfFile)!;
-            Directory.CreateDirectory(steamLoaderSwfPath);
-            bool isSteamPatchAvailable = await Utils.Utils.DownloadFileAsync(PatchedSteamFileUrl, steamLoaderSwfFile);
+            string defaultCrcJson = File.ReadAllText(defaultCrcFile);
+            DefaultChecksums = JsonConvert.DeserializeObject<Dictionary<string, string>>(defaultCrcJson);
+            File.Delete(defaultCrcFile);
 
-            string itchLoaderSwfFile = Path.Combine(tempPath, "CustomLoaders\\Itch\\AstrofluxDesktop.swf");
-            string itchLoaderSwfPath = Path.GetDirectoryName(itchLoaderSwfFile)!;
-            Directory.CreateDirectory(itchLoaderSwfPath);
-            bool isItchPatchAvailable = await Utils.Utils.DownloadFileAsync(PatchedItchFileUrl, itchLoaderSwfFile);
-
-            Log.Trace("Initializing AstrofluxLauncher...");
-            Log.Trace($"This launcher was created by {Author}.");
-            Log.Trace($"Version: {Version}");
-            Log.Trace($"Licence: {Licence}");
-            Log.Trace($"Repository: {Repository}");
-            Log.Write();
-            Log.Trace("Press ESC to go back one page or exit at any time.");
-            Log.Trace("Navigate using the arrow keys and press ENTER to select.");
-            Log.Write();
-            Log.Trace($"Temporary folder is: {tempPath}");
-            Log.Trace($"Launcher folder is: {launcherPath}");
-            Log.Write();
+            StartMessages(tempPath, launcherPath);
 
             Input = new Input();
             Input.AddOnKeyPressed(OnKeyPressed);
@@ -91,7 +105,10 @@ namespace AstrofluxLauncher
             BuildSelectors(Input);
             while (true) {
                 if (_PrevWindowWidth != Console.WindowWidth || _PrevWindowHeight != Console.WindowHeight) {
-                    Log.ClearVertical(DrawingStart, Log.CurrentCursorYPosition);
+                    Console.Clear();
+                    StartMessages(tempPath, launcherPath);
+                    DrawingStart = Console.GetCursorPosition().Top;
+
                     if (CurrentSelector != null) {
                         CurrentSelector.NeedsRedraw = true;
                     }
@@ -104,11 +121,30 @@ namespace AstrofluxLauncher
             }
         }
 
+        public Config LoadConfig() {
+            CurrentConfig = JsonConvert.DeserializeObject<Config>(File.ReadAllText(LauncherConfigPath)) ?? new Config();
+            return CurrentConfig;
+        }
+
+        public void SaveConfig() {
+            File.WriteAllText(LauncherConfigPath, JsonConvert.SerializeObject(CurrentConfig, Formatting.Indented));
+        }
+
+        private void StartMessages(string tempPath, string launcherPath) {
+            Log.Trace("Initializing AstrofluxLauncher...");
+            Log.Trace($"This launcher was created by {Author}.");
+            Log.Trace($"Version: {Version}");
+            Log.Trace($"Licence: {Licence}");
+            Log.Trace($"Repository: {Repository}");
+            Log.Trace($"Temporary folder is: {tempPath}");
+            Log.Trace($"Launcher folder is: {launcherPath}");
+            Log.Write();
+            Log.Trace("Press ESC to go back one page or exit at any time.");
+            Log.Trace("Navigate using the arrow keys and press ENTER to select.");
+            Log.Write();
+        }
+
         private bool OnKeyPressed(ConsoleKey key) {
-            if (key == ConsoleKey.Escape) {
-                SwitchSelector(Selectors["Exit"], false);
-                return true;
-            }
             return false;
         }
 
@@ -118,22 +154,23 @@ namespace AstrofluxLauncher
             SwitchSelector(Selectors["SelectGameToWork"]);
         }
 
-        public void BackSelector() {
+        public void BackSelector(bool reset = false, bool goToTop = true) {
             if (CurrentSelector == PreviousSelector)
                 return;
 
             if (PreviousSelector != null) {
-                SwitchSelector(PreviousSelector, true);
+                SwitchSelector(PreviousSelector, reset, goToTop);
             }
         }
 
         public void SwitchSelector(ItemSelector? selector, bool reset = false, bool goToTop = true) {
-            Log.ClearVertical(DrawingStart, Console.LargestWindowHeight);
+            Log.ClearVertical(DrawingStart, Console.LargestWindowHeight, false);
             if (CurrentSelector != null) {
-                CurrentSelector.PageBehaviour?.OnPageExit(selector);
+                CurrentSelector.OnExit(selector);
                 PreviousSelector = CurrentSelector;
             }
 
+            Console.SetCursorPosition(0, goToTop ? 0 : DrawingStart);
             CurrentSelector = selector;
             if (reset) {
                 CurrentSelector?.Reset();
@@ -141,9 +178,8 @@ namespace AstrofluxLauncher
 
             if (CurrentSelector is not null) {
                 CurrentSelector.NeedsRedraw = true;
-                CurrentSelector.PageBehaviour?.OnPageEnter(PreviousSelector);
+                CurrentSelector.OnEnter(PreviousSelector);
             }
-            Console.SetCursorPosition(0, goToTop ? 0 : DrawingStart);
         }
 
         public bool OnSelector(ItemSelector? selector) {

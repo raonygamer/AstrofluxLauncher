@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AstrofluxLauncher.UI {
     public class ItemSelector {
@@ -57,15 +58,27 @@ namespace AstrofluxLauncher.UI {
 
         public bool NeedsRedraw { get; set; } = true;
 
-        public ItemSelector(Input input, string title, List<Item> items, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] Type? pageBehaviourType = null) {
+        public bool WasRendered { get; private set; } = false;
+
+        public int DefaultSelected { get; set; } = -1;
+
+        public Dictionary<string, object> Data { get; private set; }
+
+        public ItemSelector(Input input, string title, List<Item> items, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] Type? pageBehaviourType = null, Dictionary<string, object>? data = null, int defaultSelected = -1) {
             input.AddOnKeyPressed((key) => {
-                if (!Program.Instance.OnSelector(this))
+                if (!Program.Instance.OnSelector(this) || !WasRendered)
                     return false;
                 return OnKeyPressed(key);
             });
 
             Title = title;
             Items = items;
+            Data = data ??= [];
+            DefaultSelected = defaultSelected;
+            SelectedIndex = DefaultSelected;
+            if (SelectedIndex >= 0 && SelectedIndex <= Items.Count - 1 && !Items[SelectedIndex].Selectable)
+                SelectedIndex = -1;
+
             foreach (var item in Items) {
                 item.TriggerRedrawFunction = () => NeedsRedraw = true;
             }
@@ -90,11 +103,22 @@ namespace AstrofluxLauncher.UI {
             Items.Clear();
         }
 
+        public void OnEnter(ItemSelector? prevPage) {
+            _PageBehaviour?.OnPageEnter(prevPage);
+        }
+
+        public void OnExit(ItemSelector? newPage) {
+            WasRendered = false;
+            _PageBehaviour?.OnPageExit(newPage);
+        }
+
         public void Draw(int startYPosition) {
             if (!NeedsRedraw)
                 return;
 
             NeedsRedraw = false;
+            WasRendered = true;
+
             if (SelectedIndex >= 0 && SelectedIndex <= Items.Count - 1 && !Items[SelectedIndex].Selectable)
                 SelectedIndex = -1;
 
@@ -108,14 +132,17 @@ namespace AstrofluxLauncher.UI {
                 NavigationIndex = -1;
 
             Log.CurrentCursorYPosition = startYPosition;
+            _PageBehaviour?.OnPageRender();
             Log.Trace(Title, true);
             for (int i = 0; i < Items.Count; i++) {
                 Items[i].Draw(this, i);
             }
-            _PageBehaviour?.OnPageRender();
         }
 
         private bool OnKeyPressed(ConsoleKey key) {
+            if (!WasRendered)
+                return false;
+
             if (_PageBehaviour is not null) {
                 if (_PageBehaviour.OnKeyPressed(key))
                     return true;
@@ -168,8 +195,9 @@ namespace AstrofluxLauncher.UI {
 
         public void Reset() {
             NavigationIndex = 0;
-            SelectedIndex = -1;
+            SelectedIndex = DefaultSelected;
             NeedsRedraw = true;
+            WasRendered = false;
         }
     }
 }
