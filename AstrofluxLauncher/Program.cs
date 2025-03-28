@@ -26,7 +26,7 @@ namespace AstrofluxLauncher
         public const string Version = "0.0.1-alpha";
         public const string Licence = "GPLv3";
         public const string Repository = "https://github.com/raonygamer/AstrofluxLauncher";
-        public const string Branch = "dev";
+        public const string Branch = "main";
         public const string AstrofluxGameId = "489560";
 
         public static readonly string DefaultCrcFileUrl = $"https://raw.githubusercontent.com/raonygamer/AstrofluxLauncher/refs/heads/{Branch}/default_crc.json";
