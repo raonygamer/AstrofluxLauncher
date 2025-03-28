@@ -28,6 +28,10 @@ namespace AstrofluxLauncher
         public const string Repository = "https://github.com/raonygamer/AstrofluxLauncher";
         public const string Branch = "dev";
 
+        public static readonly string DefaultCrcFileUrl = $"https://raw.githubusercontent.com/raonygamer/AstrofluxLauncher/refs/heads/{Branch}/default_crc.json";
+        public static readonly string PatchedItchFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{Branch}/Loaders/AstrofluxDesktop/AstrofluxDesktop.swf";
+        public static readonly string PatchedSteamFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{Branch}/Loaders/AstrofluxSteam/Astroflux.swf";
+
         public Input? Input { get; private set; }
         public ItemSelector? CurrentSelector { get; private set; }
         public ItemSelector? PreviousSelector { get; private set; }
@@ -52,6 +56,16 @@ namespace AstrofluxLauncher
             if (!File.Exists(launcherConfigPath)) {
                 File.WriteAllText(launcherConfigPath, JsonConvert.SerializeObject(new Config(), Formatting.Indented));
             }
+
+            string steamLoaderSwfFile = Path.Combine(tempPath, "CustomLoaders\\Steam\\Astroflux.swf");
+            string steamLoaderSwfPath = Path.GetDirectoryName(steamLoaderSwfFile)!;
+            Directory.CreateDirectory(steamLoaderSwfPath);
+            bool isSteamPatchAvailable = await Utils.Utils.DownloadFileAsync(PatchedSteamFileUrl, steamLoaderSwfFile);
+
+            string itchLoaderSwfFile = Path.Combine(tempPath, "CustomLoaders\\Itch\\AstrofluxDesktop.swf");
+            string itchLoaderSwfPath = Path.GetDirectoryName(itchLoaderSwfFile)!;
+            Directory.CreateDirectory(itchLoaderSwfPath);
+            bool isItchPatchAvailable = await Utils.Utils.DownloadFileAsync(PatchedItchFileUrl, itchLoaderSwfFile);
 
             Log.Trace("Initializing AstrofluxLauncher...");
             Log.Trace($"This launcher was created by {Author}.");

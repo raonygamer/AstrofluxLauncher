@@ -7,11 +7,15 @@ package {
 	import flash.display.Sprite;
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
+	import flash.events.HTTPStatusEvent;
 	import flash.events.InvokeEvent;
 	import flash.events.KeyboardEvent;
 	import flash.events.NativeWindowBoundsEvent;
 	import flash.events.TimerEvent;
 	import flash.events.UncaughtErrorEvent;
+	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
+	import flash.filesystem.FileStream;
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.net.URLLoader;
@@ -49,11 +53,6 @@ package {
 			loader.contentLoaderInfo.addEventListener("complete", onContentLoadingComplete);
 			loader.contentLoaderInfo.addEventListener("ioError", onIoError);
 			loader.uncaughtErrorEvents.addEventListener("uncaughtError", onUncaughtError);
-			
-			tf.x = 160;
-			tf.width = stage.stageWidth - tf.x;
-			tf.height = stage.stageHeight;
-			tf.setTextFormat(new TextFormat("Verdana", 18, 0xffffff));
 		}
 		
 		private function onContentLoadingComplete(e:Event):void 
@@ -78,6 +77,13 @@ package {
 			stage.addEventListener("enterFrame",update);
 			stage.addEventListener("keyDown",onKeyDown);
 			stage.displayState = "fullScreenInteractive";
+			
+			tf.x = 160;
+			tf.y = 0;
+			tf.width = stage.stageWidth - tf.x;
+			tf.height = stage.stageHeight;
+			tf.setTextFormat(new TextFormat("Verdana", 24, 0xffffff));
+			
 			NativeApplication.nativeApplication.addEventListener("exiting", onExit);
 			try {
 				loadExternalSWF();
@@ -175,13 +181,59 @@ package {
 		
 		private function loadExternalSWF() : void {
 			var urlLoader:URLLoader = new URLLoader();
-			var request:URLRequest = new URLRequest(SWF_SOURCE);
-		
-			log("Loading external swf...");
-			urlLoader.load(request);
-			urlLoader.dataFormat = "binary";
-			urlLoader.addEventListener("complete", onLoadComplete);
-			urlLoader.addEventListener("ioError", onLoadError);
+			var launcherConfigFile:File = new File(File.userDirectory.nativePath + "/AppData/Roaming/AstrofluxLauncher/config.json");
+			var swfSource:String = SWF_SOURCE;
+			
+			var loadSwf:Function = function(url:String):void 
+			{
+				var request:URLRequest = new URLRequest(url);
+				log("Loading external swf...");
+				urlLoader.load(request);
+				urlLoader.dataFormat = "binary";
+				urlLoader.addEventListener("complete", onLoadComplete);
+				urlLoader.addEventListener("ioError", onLoadError);
+			};
+			
+			var onHttpStatus:Function = function(e:HTTPStatusEvent):void 
+			{
+				loadSwf(e.status == 200 ? swfSource : SWF_SOURCE);
+			};
+			
+			if (launcherConfigFile.exists) {
+				var fs:FileStream = new FileStream();
+				try {
+					fs.open(launcherConfigFile, FileMode.READ);
+					var jsonConfig:Object = JSON.parse(fs.readUTFBytes(fs.bytesAvailable));
+					fs.close();
+					if ("SwfRemoteUrl" in jsonConfig) {
+						var url:String = jsonConfig["SwfRemoteUrl"];
+						if (url.search("file://") != -1) {
+							var swfFile:File = new File(url.replace("file://", ""));
+							if (swfFile.exists)
+								swfSource = url;
+							loadSwf(swfSource);
+						}
+						else if (url.search("http://") != -1) {
+							var testRequest:URLRequest = new URLRequest(url);
+							var testLoader:URLLoader = new URLLoader();
+							testLoader.load(testRequest);
+							testLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, onHttpStatus);
+						}
+						else {
+							loadSwf(SWF_SOURCE);
+						}
+					}
+				}
+				catch (e:Error) {
+					log(e.message);
+					var request:URLRequest = new URLRequest(SWF_SOURCE);
+					log("Loading external swf...");
+					urlLoader.load(request);
+					urlLoader.dataFormat = "binary";
+					urlLoader.addEventListener("complete", onLoadComplete);
+					urlLoader.addEventListener("ioError", onLoadError);
+				}
+			}
 		}
 		
 		private function onUncaughtError(e:UncaughtErrorEvent) : void {
@@ -238,9 +290,6 @@ package {
 		}
 		
 		private function log(text:String) : void {
-			if(true) {
-				return;
-			}
 			tf.appendText(text + "\n");
 			tf.scrollV = tf.maxScrollV;
 		}
