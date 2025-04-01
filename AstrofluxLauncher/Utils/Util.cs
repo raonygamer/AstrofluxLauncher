@@ -33,6 +33,7 @@ namespace AstrofluxLauncher.Utils {
                 }
                 using var fs = new FileStream(destination, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 await response.Content.CopyToAsync(fs);
+                fs.Close();
             }
             return response.IsSuccessStatusCode;
         }

@@ -195,6 +195,8 @@ namespace AstrofluxLauncher
 
             var zipFile = Path.Combine(LauncherInfo.LauncherDirectory, "UpdateCache/Update.zip");
             var launcherFile = Path.Combine(LauncherInfo.LauncherDirectory, "AstrofluxLauncher.exe");
+            if (File.Exists(zipFile))
+                File.Delete(zipFile);
             if (!await Util.DownloadFileAsync($"{releasePart}/download/AstrofluxLauncher_{releaseVersionString}.zip", zipFile))
                 return false;
 

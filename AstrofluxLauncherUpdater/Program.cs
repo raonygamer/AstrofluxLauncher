@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using ICSharpCode.SharpZipLib.Zip;
+using System.IO.Compression;
 
 namespace AstrofluxLauncherUpdater {
     internal class Program {
@@ -61,9 +61,8 @@ namespace AstrofluxLauncherUpdater {
                 }
                 catch {}
             }
-            
-            var zip = new FastZip();
-            zip.ExtractZip(args[2], updatePath, FastZip.Overwrite.Always, name => true, "", "", true);
+
+            ZipFile.ExtractToDirectory(args[2], updatePath, true);
             foreach (var dir in Directory.GetDirectories(updatePath, "AstrofluxLauncher_*", SearchOption.TopDirectoryOnly))
             {
                 string[] files = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
