@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AstrofluxLauncher.Utils {
-    public static class GameVersion {
-        
+    public enum GameType {
+        Steam,
+        Itch
     }
 }

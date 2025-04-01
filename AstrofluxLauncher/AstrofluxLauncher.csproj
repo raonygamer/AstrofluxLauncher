@@ -7,11 +7,18 @@
     <Nullable>enable</Nullable>
     <PublishAot>False</PublishAot>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Semver" Version="3.0.0" />
     <PackageReference Include="SharpFileDialog" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AstrofluxLauncherUpdater\AstrofluxLauncherUpdater.csproj" />
   </ItemGroup>
 
 </Project>

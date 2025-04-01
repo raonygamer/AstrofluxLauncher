@@ -1,8 +1,7 @@
 {
   "profiles": {
     "AstrofluxLauncher": {
-      "commandName": "Project",
-      "workingDirectory": "$(OutDir)"
+      "commandName": "Project"
     }
   }
 }
