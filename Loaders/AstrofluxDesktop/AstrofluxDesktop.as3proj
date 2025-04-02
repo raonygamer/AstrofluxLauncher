@@ -24,7 +24,7 @@
     <option advancedTelemetry="False" />
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
-    <option es="False" />
+    <option es="True" />
     <option inline="False" />
     <option locale="" />
     <option loadConfig="" />
@@ -35,7 +35,7 @@
     <option showInvalidCSS="True" />
     <option showDeprecationWarnings="True" />
     <option showUnusedTypeSelectorWarnings="True" />
-    <option strict="True" />
+    <option strict="False" />
     <option useNetwork="True" />
     <option useResourceBundleMetadata="True" />
     <option warnings="True" />

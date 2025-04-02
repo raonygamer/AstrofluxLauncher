@@ -16,12 +16,12 @@ namespace AstrofluxLauncher.Utils {
         [LibraryImport("user32.dll")]
         private static partial nint GetForegroundWindow();
 
-        [LibraryImport("user32.dll", SetLastError = true)]
-        private static partial int GetWindowThreadProcessId(nint handle, out int processId);
+        [LibraryImport("kernel32.dll")]
+        private static partial nint GetConsoleWindow();
 
         public static bool WindowIsInFocus()
         {
-            return Process.GetCurrentProcess().MainWindowHandle == GetForegroundWindow() || LauncherInfo.IsDebug;
+            return GetConsoleWindow() == GetForegroundWindow() || LauncherInfo.IsDebug;
         }
 
         public static async Task<bool> DownloadFileAsync(string url, string destination) {

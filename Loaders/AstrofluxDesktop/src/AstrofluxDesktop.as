@@ -277,6 +277,7 @@ package {
 			timer.start();
 		}
 		
+		public static var Sended:Boolean = false;
 		private function createStarlingChild() : void {
 			var domain:ApplicationDomain = loader.contentLoaderInfo.applicationDomain;
 			if(domain.hasDefinition("RymdenRunt")) {
