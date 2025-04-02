@@ -25,7 +25,7 @@ public class ShouldPatchQuestionPage : ItemListSelectPageBase {
 
     public override async Task<bool> OnItemSelected(PageDrawer drawer, ItemListSelectPageBase pg, SelectorItem item, int index) {
         await base.OnItemSelected(drawer, pg, item, index);
-        if (item.CustomData is null || !item.CustomData.TryGetValue("GameType", out var type) || type is not GameType gameType)
+        if (item.CustomData is null || !item.CustomData.TryGetValue("GameType", out var type) || type is not GameType gameType || !item.CustomData.TryGetValue("GameState", out var state) || state is not GameState gameState)
             return false;
         
         switch (item.Id) {
@@ -35,7 +35,10 @@ public class ShouldPatchQuestionPage : ItemListSelectPageBase {
                 await drawer.ChangePage("client_selector_page", true, item.CustomData);
                 break;
             case "no_item":
-                await drawer.ChangePage("main_page", true, null);
+                if (gameState is GameState.InstalledPatchedOutdated)
+                    await drawer.ChangePage("client_selector_page", true, item.CustomData);
+                else
+                    await drawer.ChangePage("main_page", true, null);
                 break;
         }
 

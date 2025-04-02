@@ -19,9 +19,20 @@ namespace AstrofluxLauncher.Utils {
         [LibraryImport("kernel32.dll")]
         private static partial nint GetConsoleWindow();
 
+        [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
+        public static extern nint FindWindowByCaption(nint zeroOnly, string lpWindowName);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern bool AttachConsole(uint dwProcessId);
+
         public static bool WindowIsInFocus()
         {
-            return GetConsoleWindow() == GetForegroundWindow() || LauncherInfo.IsDebug;
+#pragma warning disable CA1416
+            return LauncherInfo.IsDebug || 
+                GetForegroundWindow() == GetConsoleWindow() ||
+                GetForegroundWindow() == Process.GetCurrentProcess().MainWindowHandle ||
+                GetForegroundWindow() == FindWindowByCaption(nint.Zero, Console.Title ?? Path.Combine(Environment.CurrentDirectory, "AstrofluxLauncher.exe"));
+#pragma warning restore CA1416
         }
 
         public static async Task<bool> DownloadFileAsync(string url, string destination) {

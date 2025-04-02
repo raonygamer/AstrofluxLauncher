@@ -50,10 +50,17 @@ namespace AstrofluxLauncher
             Time = Stopwatch.StartNew();
 
             Console.CursorVisible = false;
+            Console.Title = $"AstrofluxLauncher v{LauncherInfo.Version}";
+
             CheckElevation();
 
+            Util.AttachConsole((uint)Environment.ProcessId);
             Directory.CreateDirectory(LauncherInfo.TempDirectory);
             Directory.CreateDirectory(LauncherInfo.LauncherDirectory);
+            if (File.Exists(Path.Combine(LauncherInfo.LauncherDirectory, "launcher-log.txt"))) {
+                File.Copy(Path.Combine(LauncherInfo.LauncherDirectory, "launcher-log.txt"), Path.Combine(LauncherInfo.LauncherDirectory, "old-launcher-log.txt"), true);
+                File.Delete(Path.Combine(LauncherInfo.LauncherDirectory, "launcher-log.txt"));
+            }
 
             Input = new Input();
             LayeredPageDrawers = [];

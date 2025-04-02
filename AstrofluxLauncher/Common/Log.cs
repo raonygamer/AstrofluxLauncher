@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,12 @@ namespace AstrofluxLauncher.Common {
         }
 
         public static char FillingCharacter = '\0';
+
+        public static void DebugLine(object obj) {
+            using var logFile = new StreamWriter(Path.Combine(LauncherInfo.LauncherDirectory, "launcher-log.txt"), true);
+            logFile.WriteLine($"[{new StackFrame(1, true).GetMethod()?.Name ?? "Unknown Function"}] [{DateTime.Now:HH:mm:ss}] {obj}");
+            logFile.Close();
+        }
 
         public static void Write(object? obj = null, Colors? colors = null, CursorPosition? position = null, bool moveNext = true, bool resetColors = true) {
             colors ??= new(ConsoleColor.Gray, ConsoleColor.Black);

@@ -116,7 +116,7 @@ namespace AstrofluxLauncher.Contexts {
             {
                 case GameType.Steam:
                 {
-                    if (GetState(GameType.Steam) != GameState.InstalledCanBePatched || PatchData.AstrofluxSteamData is null)
+                    if (GetState(GameType.Steam) is not (GameState.InstalledCanBePatched or GameState.InstalledPatchedOutdated) || PatchData.AstrofluxSteamData is null)
                         return false;
                     var path = SteamVersionPath!;
                     await File.WriteAllBytesAsync(path, PatchData.AstrofluxSteamData);
@@ -124,7 +124,7 @@ namespace AstrofluxLauncher.Contexts {
                 }
                 case GameType.Itch:
                 {
-                    if (GetState(GameType.Itch) != GameState.InstalledCanBePatched || PatchData.AstrofluxDesktopData is null)
+                    if (GetState(GameType.Itch) is not (GameState.InstalledCanBePatched or GameState.InstalledPatchedOutdated) || PatchData.AstrofluxDesktopData is null)
                         return false;
                     var path = ItchVersionPath!;
                     await File.WriteAllBytesAsync(path, PatchData.AstrofluxDesktopData);

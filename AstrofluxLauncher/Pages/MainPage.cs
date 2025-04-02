@@ -23,8 +23,8 @@ public class MainPage : ItemListSelectPageBase
                 };
                 
                 var gameState = drawer.Launcher.GameContext.GetState(gameType);
-                if (gameState is (GameState.InstalledCanBePatched or GameState.InstalledPatched))
-                    await drawer.ChangePage(gameState is GameState.InstalledCanBePatched ? "should_patch_page" : "client_selector_page", true, new() {
+                if (gameState is (GameState.InstalledCanBePatched or GameState.InstalledPatched or GameState.InstalledPatchedOutdated))
+                    await drawer.ChangePage(gameState is (GameState.InstalledCanBePatched or GameState.InstalledPatchedOutdated) ? "should_patch_page" : "client_selector_page", true, new() {
                         { "GameType", gameType },
                         { "GameState", gameState }
                     });
