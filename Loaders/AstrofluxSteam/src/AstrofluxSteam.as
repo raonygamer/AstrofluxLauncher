@@ -235,13 +235,11 @@ package {
 				}
 				catch (e:Error) {
 					log(e.message);
-					var request:URLRequest = new URLRequest(SWF_SOURCE);
-					log("Loading external swf...");
-					urlLoader.load(request);
-					urlLoader.dataFormat = "binary";
-					urlLoader.addEventListener("complete", onLoadComplete);
-					urlLoader.addEventListener("ioError", onLoadError);
+					loadSwf(SWF_SOURCE);
 				}
+			}
+			else {
+				loadSwf(SWF_SOURCE);
 			}
 		}
 		
@@ -318,11 +316,9 @@ package {
 		}
 		
 		private function log(text:String) : void {
-			if(true) {
-				return;
-			}
 			tf.appendText(text + "\n");
 			tf.scrollV = tf.maxScrollV;
+			trace(text);
 		}
 		
 		public function testRestartAppIfNecessary(code:uint) : void {

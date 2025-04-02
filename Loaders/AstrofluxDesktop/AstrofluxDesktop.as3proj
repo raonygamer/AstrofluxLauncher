@@ -24,25 +24,25 @@
     <option advancedTelemetry="False" />
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
-    <option es="True" />
+    <option es="False" />
     <option inline="False" />
     <option locale="" />
     <option loadConfig="" />
-    <option optimize="True" />
+    <option optimize="False" />
     <option omitTraces="True" />
     <option showActionScriptWarnings="True" />
     <option showBindingWarnings="True" />
     <option showInvalidCSS="True" />
     <option showDeprecationWarnings="True" />
     <option showUnusedTypeSelectorWarnings="True" />
-    <option strict="False" />
+    <option strict="True" />
     <option useNetwork="True" />
     <option useResourceBundleMetadata="True" />
     <option warnings="True" />
     <option verboseStackTraces="False" />
     <option linkReport="" />
     <option loadExterns="" />
-    <option staticLinkRSL="True" />
+    <option staticLinkRSL="False" />
     <option additional="-swf-version=40" />
     <option compilerConstants="" />
     <option minorVersion="" />
@@ -87,7 +87,7 @@
   <options>
     <option showHiddenPaths="False" />
     <option testMovie="Custom" />
-    <option testMovieCommand="$(FlexSDK)/bin/adl.exe application.xml" />
+    <option testMovieCommand="$(FlexSDK)/bin/adl.exe application.xml $(ProjectDir)" />
   </options>
   <!-- Plugin storage -->
   <storage />

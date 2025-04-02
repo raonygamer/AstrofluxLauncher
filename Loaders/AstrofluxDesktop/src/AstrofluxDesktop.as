@@ -234,6 +234,9 @@ package {
 					urlLoader.addEventListener("ioError", onLoadError);
 				}
 			}
+			else {
+				loadSwf(SWF_SOURCE);
+			}
 		}
 		
 		private function onUncaughtError(e:UncaughtErrorEvent) : void {
@@ -293,6 +296,7 @@ package {
 		private function log(text:String) : void {
 			tf.appendText(text + "\n");
 			tf.scrollV = tf.maxScrollV;
+			trace(text);
 		}
 		
 		private function onExit(e:Event = null) : void {

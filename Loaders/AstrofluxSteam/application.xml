@@ -16,4 +16,7 @@
     <depthAndStencil>true</depthAndStencil>
   </initialWindow>
   <supportedProfiles>extendedDesktop</supportedProfiles>
+  <extensions>
+    <extensionID>com.amanitadesign.steam.FRESteamWorks</extensionID>
+  </extensions>
 </application>
