@@ -87,7 +87,7 @@
   <options>
     <option showHiddenPaths="False" />
     <option testMovie="Custom" />
-    <option testMovieCommand="$(FlexSDK)/bin/adl.exe -extdir $(ProjectDir)/extensions application.xml $(ProjectDir)/" />
+    <option testMovieCommand="$(FlexSDK)/bin/adl.exe -extdir ./extensions application.xml" />
   </options>
   <!-- Plugin storage -->
   <storage />
