@@ -10,35 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/AstrofluxDesktop.as3proj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/AstrofluxDesktop.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/application.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/assets/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/assets/loading.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/AstrofluxDesktop.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/BackgroundBitmap.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/LoadingBitmap.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/Popup.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/flexCompiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/runConfigurations/AstrofluxSteam.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/Astroflux.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/AstrofluxSteam.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/lib/FRESteamWorks.ane" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/AstrofluxSteam.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/BackgroundBitmap.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/LoadingBitmap.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/Popup.as" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/application.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/assets/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/assets/loading.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/steam_appid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +48,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.16134316",
     "project.structure.side.proportion": "0.19562715",
     "vue.rearranger.settings.migration": "true"
@@ -115,6 +88,7 @@
       <updated>1743715826539</updated>
       <workItem from="1743715827291" duration="1379000" />
       <workItem from="1743717368423" duration="100000" />
+      <workItem from="1743718820520" duration="76000" />
     </task>
     <servers />
   </component>
