@@ -13,7 +13,14 @@
         </dependencies>
         <compiler-options>
           <map>
-            <entry key="compiler.debug.swf" value="false" />
+            <entry key="compiler.debug.swf" value="true" />
+            <entry key="compiler.keep-generated-actionscript" value="true" />
+            <entry key="metadata.contributor" value="rydev" />
+            <entry key="metadata.creator" value="Fula Fisken" />
+            <entry key="metadata.description" value="The desktop game loader for Astroflux." />
+            <entry key="metadata.language" value="English" />
+            <entry key="metadata.publisher" value="Fula Fisken" />
+            <entry key="metadata.title" value="AstrofluxDesktop" />
           </map>
           <option name="resourceFilesMode" value="None" />
         </compiler-options>
