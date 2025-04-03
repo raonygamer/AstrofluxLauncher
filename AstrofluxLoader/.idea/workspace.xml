@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="AstrofluxDesktop" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/AstrofluxDesktop.as3proj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/AstrofluxDesktop.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/application.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/assets/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/assets/loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/AstrofluxDesktop.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/BackgroundBitmap.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/LoadingBitmap.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/src/Popup.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/flexCompiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/.idea/runConfigurations/AstrofluxSteam.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/Astroflux.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/AstrofluxSteam.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/lib/FRESteamWorks.ane" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/AstrofluxSteam.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/BackgroundBitmap.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/LoadingBitmap.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/Popup.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/application.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/assets/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/src/assets/loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/steam_appid.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2vEgotXeBoL26ri8iQzA4n5BjYI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Flash App.AstrofluxDesktop.executor": "Run",
+    "Flash App.AstrofluxLoader.executor": "Run",
+    "Flash App.AstrofluxSteam.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/bravo/OneDrive/Documentos/GitHub/AstrofluxLauncher/AstrofluxLoader",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.16134316",
+    "project.structure.side.proportion": "0.19562715",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\Steam" />
+      <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\Steam\src" />
+      <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\src\assets" />
+      <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\src" />
+      <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\Desktop" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Compound.All">
+    <list>
+      <item itemvalue="Compound.All" />
+      <item itemvalue="Flash App.AstrofluxDesktop" />
+      <item itemvalue="Flash App.AstrofluxSteam" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="" />
+      <created>1743715826539</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743715826539</updated>
+      <workItem from="1743715827291" duration="1379000" />
+      <workItem from="1743717368423" duration="100000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

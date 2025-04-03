@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="All" type="CompoundRunConfigurationType">
+    <toRun name="AstrofluxDesktop" type="FlashRunConfigurationType" />
+    <toRun name="AstrofluxSteam" type="FlashRunConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

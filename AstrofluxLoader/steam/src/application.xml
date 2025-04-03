@@ -4,7 +4,7 @@
   <filename>Astroflux</filename>
   <versionNumber>1.0.0</versionNumber>
   <initialWindow>
-    <content>Astroflux.swf</content>
+    <content>AstrofluxSteam.swf</content>
     <width>1280</width>
     <height>720</height>
     <renderMode>direct</renderMode>

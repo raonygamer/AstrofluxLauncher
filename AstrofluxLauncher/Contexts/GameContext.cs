@@ -16,8 +16,8 @@ namespace AstrofluxLauncher.Contexts {
     }
 
     public class GameContext {
-        public static readonly string PatchedSteamFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{LauncherInfo.Branch}/Loaders/AstrofluxSteam/Astroflux.swf";
-        public static readonly string PatchedItchFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{LauncherInfo.Branch}/Loaders/AstrofluxDesktop/AstrofluxDesktop.swf";
+        public static readonly string PatchedSteamFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{LauncherInfo.Branch}/AstrofluxLoader/artifacts/Astroflux.swf";
+        public static readonly string PatchedItchFileUrl = $"https://github.com/raonygamer/AstrofluxLauncher/raw/refs/heads/{LauncherInfo.Branch}/AstrofluxLoader/artifacts/AstrofluxDesktop.swf";
         public static readonly string DefaultCrcFileUrl = $"https://raw.githubusercontent.com/raonygamer/AstrofluxLauncher/refs/heads/{LauncherInfo.Branch}/default_crc.json";
         public const string AstrofluxSteamPathPart = "Steam\\steamapps\\common\\Astroflux\\Astroflux.swf";
         public const string AstrofluxItchPathPart = "Astroflux\\AstrofluxDesktop.swf";

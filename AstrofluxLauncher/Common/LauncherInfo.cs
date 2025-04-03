@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AstrofluxLauncher.Common {
     public static class LauncherInfo {
         public const string Author = "ryd3v";
-        public const string Version = "1.0.4";
+        public const string Version = "1.0.5";
         public const string Licence = "GPLv3";
         public const string Repository = "https://github.com/raonygamer/AstrofluxLauncher";
         public const string Branch = "main";

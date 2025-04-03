@@ -2,20 +2,19 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="AstrofluxSteam">
     <configurations>
-      <configuration name="AstrofluxSteam" target-platform="Desktop" pure-as="true" main-class="AstrofluxSteam" output-file="Astroflux.swf" output-folder="$MODULE_DIR$/out/production/AstrofluxSteam">
-        <dependencies>
+      <configuration name="AstrofluxSteam" target-platform="Desktop" pure-as="true" main-class="AstrofluxSteam" output-file="AstrofluxSteam.swf" output-folder="$MODULE_DIR$/../out/production/AstrofluxSteam">
+        <dependencies target-player="50.0">
           <entries>
-            <entry library-name="lib" library-level="project">
+            <entry library-name="common_src" library-level="project">
+              <dependency linkage="Include" />
+            </entry>
+            <entry library-id="e417c967-a93a-485d-a07a-cdcae4e8d81e">
               <dependency linkage="Merged" />
             </entry>
           </entries>
           <sdk name="Flex 4.16.1 with AIR 50.0" />
         </dependencies>
-        <compiler-options>
-          <map>
-            <entry key="compiler.keep-generated-actionscript" value="false" />
-          </map>
-        </compiler-options>
+        <compiler-options />
         <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/application.xml" package-file-name="AstrofluxSteam" />
         <packaging-android />
         <packaging-ios />
@@ -30,6 +29,17 @@
     </content>
     <orderEntry type="jdk" jdkName="Flex 4.16.1 with AIR 50.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="e417c967-a93a-485d-a07a-cdcae4e8d81e" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="common_src" level="project" />
   </component>
 </module>

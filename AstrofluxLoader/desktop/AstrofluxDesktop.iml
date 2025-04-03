@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="AstrofluxDesktop">
+    <configurations>
+      <configuration name="AstrofluxDesktop" target-platform="Desktop" pure-as="true" main-class="AstrofluxDesktop" output-file="AstrofluxDesktop.swf" output-folder="$MODULE_DIR$/../out/production/AstrofluxDesktop">
+        <dependencies target-player="50.0">
+          <entries>
+            <entry library-name="common_src" library-level="project">
+              <dependency linkage="Include" />
+            </entry>
+          </entries>
+          <sdk name="Flex 4.16.1 with AIR 50.0" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/application.xml" package-file-name="AstrofluxDesktop" />
+        <packaging-android />
+        <packaging-ios />
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="Flex 4.16.1 with AIR 50.0" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="common_src" level="project" />
+  </component>
+</module>
