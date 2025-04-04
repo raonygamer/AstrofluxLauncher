@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="AstrofluxSteam" />
+      <artifact name="AstrofluxDesktop" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artifacts/AstrofluxDesktop.swf" beforeDir="false" afterPath="$PROJECT_DIR$/artifacts/AstrofluxDesktop.swf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/src/AstrofluxDesktop.as" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/AstrofluxDesktop.as" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/src/application.xml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/application.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam/AstrofluxSteam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/steam/AstrofluxSteam.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam/src/application.xml" beforeDir="false" afterPath="$PROJECT_DIR$/steam/src/application.xml" afterDir="false" />
-    </list>
+    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +85,7 @@
       <updated>1743715826539</updated>
       <workItem from="1743715827291" duration="1379000" />
       <workItem from="1743717368423" duration="100000" />
-      <workItem from="1743718820520" duration="1069000" />
+      <workItem from="1743718820520" duration="1245000" />
     </task>
     <servers />
   </component>
