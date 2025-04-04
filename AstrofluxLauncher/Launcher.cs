@@ -53,6 +53,7 @@ namespace AstrofluxLauncher
             Console.Title = $"AstrofluxLauncher v{LauncherInfo.Version}";
 
             CheckElevation();
+            CheckUpdates().GetAwaiter().GetResult();
 
             Util.AttachConsole((uint)Environment.ProcessId);
             Directory.CreateDirectory(LauncherInfo.TempDirectory);
@@ -93,8 +94,6 @@ namespace AstrofluxLauncher
 
         public async Task<int> Start()
         {
-            await CheckUpdates();
-            
             LastFrameTime = Time.Elapsed.TotalSeconds;
             DeltaTime = 1.0 / RequestedFramesPerSecond;
             StartDrawLine = Console.CursorTop;
@@ -211,11 +210,8 @@ namespace AstrofluxLauncher
             await File.WriteAllTextAsync(batchFile, "" +
                 $"@echo off\n" +
                 $"call \"AstrofluxLauncherUpdater.exe\" \"update\" \"{Environment.ProcessId}\" \"{zipFile}\"\n" +
-                $"del \"*.exe\" /f /q\n" +
-                $"del \"*.dll\" /f /q\n" +
-                $"del \"*.pdb\" /f /q\n" +
                 $"xcopy \"{Environment.CurrentDirectory}/update\" \"{Environment.CurrentDirectory}\" /q /c /s /e /y\n" +
-                $"del \"{Environment.CurrentDirectory}/update\" /f /q\n" +
+                $"rmdir \"{Environment.CurrentDirectory}/update\" /s /q\n" +
                 $"echo Astroflux launcher was updated...\n" +
                 $"start \"\" \"./AstrofluxLauncher.exe\"\n" +
                 $"(goto) 2>nul & del \"%~f0\"\n");

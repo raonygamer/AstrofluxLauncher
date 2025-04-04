@@ -128,13 +128,13 @@ public class ClientSelectorPage : ItemListSelectPageBase
             
             pg.SelectorItems.Add(new("add_new", $"Add new client", false, false, customData)
             {
-                HoverBackColor = ConsoleColor.DarkCyan,
+                HoverTextColor = ConsoleColor.DarkCyan,
                 HoverNavigatorCharacter = '+'
             });
             
             pg.SelectorItems.Add(new("refresh", $"Refresh...", false, false, customData)
             {
-                HoverBackColor = ConsoleColor.Yellow
+                HoverTextColor = ConsoleColor.Yellow,
             });
             
             drawer.Launcher.Config.Load();

@@ -14,10 +14,10 @@ namespace AstrofluxLauncher {
         private string _text;
         private ConsoleColor _defaultTextColor = ConsoleColor.Gray;
         private ConsoleColor _defaultBackColor = ConsoleColor.Black;
-        private ConsoleColor _hoverTextColor = ConsoleColor.Black;
-        private ConsoleColor _hoverBackColor = ConsoleColor.Gray;
-        private ConsoleColor _selectedTextColor = ConsoleColor.Black;
-        private ConsoleColor _selectedBackColor = ConsoleColor.Red;
+        private ConsoleColor _hoverTextColor = ConsoleColor.Yellow;
+        private ConsoleColor _hoverBackColor = ConsoleColor.Black;
+        private ConsoleColor _selectedTextColor = ConsoleColor.White;
+        private ConsoleColor _selectedBackColor = ConsoleColor.DarkRed;
         private ConsoleColor _disabledTextColor = ConsoleColor.DarkGray;
         private ConsoleColor _disabledBackColor = ConsoleColor.Black;
         private string _defaultNavigatorFormat = "[{0}] {1}";
