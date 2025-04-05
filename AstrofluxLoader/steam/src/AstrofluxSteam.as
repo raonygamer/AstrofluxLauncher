@@ -224,10 +224,10 @@ public class AstrofluxSteam extends Sprite {
 		loadRemoteSwf("http://r.playerio.com/r/rymdenrunt-k9qmg7cvt0ylialudmldvg/Preload.swf");
 	}
 
-	private function onTestHttpStatus(e:HTTPStatusEvent):void {
-		log.debug("Test HTTP Status for: '" + e.target.url + "' is " + e.status);
+	private function onTestHttpStatus(e:HTTPStatusEvent, url:String):void {
+		log.debug("Test HTTP Status for: '" + url + "' is " + e.status);
 		if (e.status == 200) {
-			loadRemoteSwf(e.target.url);
+			loadRemoteSwf(url);
 		} else {
 			log.debug("Test HTTP Status was not OK: " + e.status);
 			loadVanillaSwf();
@@ -270,7 +270,13 @@ public class AstrofluxSteam extends Sprite {
 					var testRequest:URLRequest = new URLRequest(url);
 					var testLoader:URLLoader = new URLLoader();
 					testLoader.load(testRequest);
-					testLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, onTestHttpStatus);
+
+					var testLoaderCallback:Function = function(e:HTTPStatusEvent):void {
+						onTestHttpStatus(e, url);
+						(e.target as URLLoader).removeEventListener(HTTPStatusEvent.HTTP_STATUS, testLoaderCallback);
+					};
+
+					testLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, testLoaderCallback);
 					return;
 				}
 			}
