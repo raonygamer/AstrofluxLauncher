@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="AstrofluxDesktop" />
+      <artifact name="AstrofluxSteam" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="" />
+    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artifacts/Astroflux.swf" beforeDir="false" afterPath="$PROJECT_DIR$/artifacts/Astroflux.swf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artifacts/AstrofluxDesktop.swf" beforeDir="false" afterPath="$PROJECT_DIR$/artifacts/AstrofluxDesktop.swf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/AstrofluxSteam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/steam/AstrofluxSteam.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +39,7 @@
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Flash App.AstrofluxDesktop.executor": "Debug",
+    "Flash App.AstrofluxDesktop.executor": "Run",
     "Flash App.AstrofluxLoader.executor": "Run",
     "Flash App.AstrofluxSteam.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -92,7 +98,8 @@
       <workItem from="1743718820520" duration="1245000" />
       <workItem from="1743860802205" duration="5705000" />
       <workItem from="1743868083508" duration="1358000" />
-      <workItem from="1743869464553" duration="1386000" />
+      <workItem from="1743869464553" duration="1505000" />
+      <workItem from="1743873059221" duration="1131000" />
     </task>
     <servers />
   </component>
