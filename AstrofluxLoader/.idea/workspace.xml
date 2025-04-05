@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/artifacts/Astroflux.swf" beforeDir="false" afterPath="$PROJECT_DIR$/artifacts/Astroflux.swf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/AstrofluxDesktop.as" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/src/AstrofluxDesktop.as" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/steam/src/AstrofluxSteam.as" beforeDir="false" afterPath="$PROJECT_DIR$/steam/src/AstrofluxSteam.as" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,32 +33,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Flash App.AstrofluxDesktop.executor": "Run",
-    "Flash App.AstrofluxLoader.executor": "Run",
-    "Flash App.AstrofluxSteam.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/bravo/OneDrive/Documentos/GitHub/AstrofluxLauncher/AstrofluxLoader",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.16134316",
-    "project.structure.side.proportion": "0.19562715",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Flash App.AstrofluxDesktop.executor&quot;: &quot;Run&quot;,
+    &quot;Flash App.AstrofluxLoader.executor&quot;: &quot;Run&quot;,
+    &quot;Flash App.AstrofluxSteam.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bravo/OneDrive/Documentos/GitHub/AstrofluxLauncher/AstrofluxLoader&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.16134316&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.19562715&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\Steam" />
@@ -68,7 +68,7 @@
       <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\Desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Flash App.AstrofluxSteam">
+  <component name="RunManager" selected="Compound.All">
     <list>
       <item itemvalue="Compound.All" />
       <item itemvalue="Flash App.AstrofluxDesktop" />
@@ -94,23 +94,13 @@
       <workItem from="1743715827291" duration="1379000" />
       <workItem from="1743717368423" duration="100000" />
       <workItem from="1743718820520" duration="1245000" />
-      <workItem from="1743860802205" duration="5230000" />
+      <workItem from="1743860802205" duration="5705000" />
+      <workItem from="1743868083508" duration="297000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="flex">
-          <url>file://$PROJECT_DIR$/steam/src/AstrofluxSteam.as</url>
-          <line>203</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

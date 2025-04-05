@@ -34,7 +34,6 @@ import flash.utils.Timer;
 
 [SWF(width="800", height="600", backgroundColor="#000000", frameRate="60")]
 public class AstrofluxSteam extends Sprite {
-	private const VANILLA_SWF_SOURCE:String = "http://r.playerio.com/r/rymdenrunt-k9qmg7cvt0ylialudmldvg/Preload.swf";
 	private const LAUNCHER_CONFIG_FILE:File = new File(File.userDirectory.nativePath + "/AppData/Roaming/AstrofluxLauncher/config.json");
 
 	private var loader:Loader = new Loader();
@@ -222,7 +221,7 @@ public class AstrofluxSteam extends Sprite {
 	}
 
 	private function loadVanillaSwf():void {
-		loadRemoteSwf(VANILLA_SWF_SOURCE);
+		loadRemoteSwf("http://r.playerio.com/r/rymdenrunt-k9qmg7cvt0ylialudmldvg/Preload.swf");
 	}
 
 	private function onTestHttpStatus(e:HTTPStatusEvent):void {
