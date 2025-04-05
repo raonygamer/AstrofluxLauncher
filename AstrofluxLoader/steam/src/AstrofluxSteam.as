@@ -236,13 +236,17 @@ public class AstrofluxSteam extends Sprite {
 
 	private function loadExternalSWF():void {
 		var appDirectory:File = File.applicationDirectory;
+		log.debug("Current app directory: " + appDirectory.nativePath);
 		var files:Array = appDirectory.getDirectoryListing();
 		var currentFileName:String = PathUtils.getFileName(this.loaderInfo.url);
-		for each (var file:File in files) {
-			if (file.isDirectory || file.name == currentFileName || file.extension.toLowerCase() != "swf")
-				continue;
-			if (loadLocalSwf(file))
-				return;
+		log.debug("Current SWF file name: " + currentFileName);
+		if (files.length != 0) {
+			for each (var file:File in files) {
+				if (file.extension == null || file.isDirectory || file.name == currentFileName || file.extension.toLowerCase() != "swf")
+					continue;
+				if (loadLocalSwf(file))
+					return;
+			}
 		}
 
 		if (!LAUNCHER_CONFIG_FILE.exists) {
@@ -251,6 +255,7 @@ public class AstrofluxSteam extends Sprite {
 			return;
 		}
 
+		log.debug("Loading SWF from the launcher config: " + LAUNCHER_CONFIG_FILE.nativePath);
 		var fs:FileStream = new FileStream();
 		try {
 			fs.open(LAUNCHER_CONFIG_FILE, FileMode.READ);
@@ -281,7 +286,8 @@ public class AstrofluxSteam extends Sprite {
 				}
 			}
 		} catch (e:Error) {
-			log.debug(e.message);
+			log.debug("Failed to load SWF from the launcher config:", e.message);
+			log.debug(e.getStackTrace());
 		} finally {
 			fs.close();
 		}
