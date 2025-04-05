@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="AstrofluxDesktop" />
+      <artifact name="AstrofluxSteam" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="" />
+    <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artifacts/Astroflux.swf" beforeDir="false" afterPath="$PROJECT_DIR$/artifacts/Astroflux.swf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/src/AstrofluxSteam.as" beforeDir="false" afterPath="$PROJECT_DIR$/steam/src/AstrofluxSteam.as" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +21,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/common_src/Log.as" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -32,7 +39,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Flash App.AstrofluxDesktop.executor": "Run",
     "Flash App.AstrofluxLoader.executor": "Run",
-    "Flash App.AstrofluxSteam.executor": "Run",
+    "Flash App.AstrofluxSteam.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "deletionFromPopupRequiresConfirmation": "false",
@@ -45,9 +52,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.16134316",
     "project.structure.side.proportion": "0.19562715",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -60,7 +68,7 @@
       <recent name="C:\Users\bravo\OneDrive\Documentos\GitHub\AstrofluxLauncher\Loaders\AstrofluxLoader\Desktop" />
     </key>
   </component>
-  <component name="RunManager" selected="Compound.All">
+  <component name="RunManager" selected="Flash App.AstrofluxSteam">
     <list>
       <item itemvalue="Compound.All" />
       <item itemvalue="Flash App.AstrofluxDesktop" />
@@ -86,10 +94,26 @@
       <workItem from="1743715827291" duration="1379000" />
       <workItem from="1743717368423" duration="100000" />
       <workItem from="1743718820520" duration="1245000" />
+      <workItem from="1743860802205" duration="5230000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/steam/src/AstrofluxSteam.as</url>
+          <line>203</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

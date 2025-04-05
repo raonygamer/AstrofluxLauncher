@@ -34,15 +34,14 @@ import flash.utils.Timer;
 
 [SWF(width="800", height="600", backgroundColor="#000000", frameRate="60")]
 public class AstrofluxSteam extends Sprite {
-	private const SWF_SOURCE:String = "http://r.playerio.com/r/rymdenrunt-k9qmg7cvt0ylialudmldvg/Preload.swf";
-	private const VERSION:int = 1;
+	private const VANILLA_SWF_SOURCE:String = "http://r.playerio.com/r/rymdenrunt-k9qmg7cvt0ylialudmldvg/Preload.swf";
+	private const LAUNCHER_CONFIG_FILE:File = new File(File.userDirectory.nativePath + "/AppData/Roaming/AstrofluxLauncher/config.json");
 
 	private var loader:Loader = new Loader();
 	private var loaderContext:LoaderContext = new LoaderContext();
 	private var childSWF:DisplayObject;
 
 	private var popup:Popup;
-	private var tf:TextField = new TextField();
 	private var loadingImageCenter:Point;
 	private var bgWidth:Number;
 	private var bgHeight:Number;
@@ -51,6 +50,7 @@ public class AstrofluxSteam extends Sprite {
 	private var loadingImage:Bitmap = new LoadingBitmap();
 
 	public var steamworks:FRESteamWorks = new FRESteamWorks();
+	private var log:Log = Log.create(new File(File.documentsDirectory.nativePath + "/astroflux/steam_loader.log"));
 
 	public function AstrofluxSteam() {
 		super();
@@ -60,11 +60,6 @@ public class AstrofluxSteam extends Sprite {
 		loader.contentLoaderInfo.addEventListener("complete", onContentLoadingComplete);
 		loader.contentLoaderInfo.addEventListener("ioError", onIoError);
 		loader.uncaughtErrorEvents.addEventListener("uncaughtError", onUncaughtError);
-
-		tf.x = 160;
-		tf.width = stage.stageWidth - tf.x;
-		tf.height = stage.stageHeight;
-		tf.setTextFormat(new TextFormat("Verdana", 18, 0xffffff));
 	}
 
 	private function onContentLoadingComplete(e:Event):void {
@@ -98,9 +93,9 @@ public class AstrofluxSteam extends Sprite {
 			}
 			loadExternalSWF();
 		} catch (e:Error) {
-			log("*** ERROR ***");
-			log(e.message);
-			log(e.getStackTrace());
+			log.debug("*** ERROR ***");
+			log.debug(e.message);
+			log.debug(e.getStackTrace());
 			showPopup("Failed to load game client.");
 		}
 	}
@@ -175,66 +170,117 @@ public class AstrofluxSteam extends Sprite {
 		showPopup("Failed to load game client.");
 	}
 
+	private function loadSwfBytes(bytes:ByteArray):void {
+		log.debug("Loading SWF bytes...");
+		loader.loadBytes(bytes, loaderContext);
+	}
+
 	private function onLoadComplete(e:Event):void {
 		var urlLoader:URLLoader = e.target as URLLoader;
 
-		log("Load Complete");
-		loader.loadBytes(ByteArray(urlLoader.data), loaderContext);
+		log.debug("Load Complete");
+		loadSwfBytes(ByteArray(urlLoader.data));
 		urlLoader.removeEventListener("complete", onLoadComplete);
 		urlLoader.removeEventListener("ioError", onLoadError);
 	}
 
 	private function onIoError(e:Event):void {
-		log("IOErrorEvent.IO_ERROR: " + e.toString());
+		log.debug("IOErrorEvent.IO_ERROR: " + e.toString());
+	}
+
+	private function loadLocalSwf(file:File):Boolean {
+		if (!file.exists) {
+			log.debug("File does not exist: " + file.nativePath);
+			return false;
+		}
+
+		var fs:FileStream = new FileStream();
+		try {
+			log.debug("Loading local SWF from: " + file.nativePath);
+			fs.open(file, FileMode.READ);
+			var bytes:ByteArray = new ByteArray();
+			fs.readBytes(bytes);
+			loadSwfBytes(bytes);
+			return true;
+		} catch (e:Error) {
+			log.debug("Error loading local SWF: " + e.message);
+			log.debug(e.getStackTrace());
+		} finally {
+			fs.close();
+		}
+		return false;
+	}
+
+	private function loadRemoteSwf(url:String):void {
+		var urlLoader:URLLoader = new URLLoader();
+		var request:URLRequest = new URLRequest(url);
+		log.debug("Loading remote SWF from: " + url);
+		urlLoader.load(request);
+		urlLoader.dataFormat = "binary";
+		urlLoader.addEventListener("complete", onLoadComplete);
+		urlLoader.addEventListener("ioError", onLoadError);
+	}
+
+	private function loadVanillaSwf():void {
+		loadRemoteSwf(VANILLA_SWF_SOURCE);
+	}
+
+	private function onTestHttpStatus(e:HTTPStatusEvent):void {
+		log.debug("Test HTTP Status for: '" + e.target.url + "' is " + e.status);
+		if (e.status == 200) {
+			loadRemoteSwf(e.target.url);
+		} else {
+			log.debug("Test HTTP Status was not OK: " + e.status);
+			loadVanillaSwf();
+		}
 	}
 
 	private function loadExternalSWF():void {
-		var urlLoader:URLLoader = new URLLoader();
-		var launcherConfigFile:File = new File(File.userDirectory.nativePath + "/AppData/Roaming/AstrofluxLauncher/config.json");
-		var swfSource:String = SWF_SOURCE;
-
-		var loadSwf:Function = function (url:String):void {
-			var request:URLRequest = new URLRequest(url);
-			log("Loading external swf...");
-			urlLoader.load(request);
-			urlLoader.dataFormat = "binary";
-			urlLoader.addEventListener("complete", onLoadComplete);
-			urlLoader.addEventListener("ioError", onLoadError);
-		};
-
-		var onHttpStatus:Function = function (e:HTTPStatusEvent):void {
-			loadSwf(e.status == 200 ? swfSource : SWF_SOURCE);
-		};
-
-		if (launcherConfigFile.exists) {
-			var fs:FileStream = new FileStream();
-			try {
-				fs.open(launcherConfigFile, FileMode.READ);
-				var jsonConfig:Object = JSON.parse(fs.readUTFBytes(fs.bytesAvailable));
-				fs.close();
-				if ("SwfRemoteUrl" in jsonConfig) {
-					var url:String = jsonConfig["SwfRemoteUrl"];
-					if (url.search("file://") != -1) {
-						var swfFile:File = new File(url.replace("file://", ""));
-						if (swfFile.exists)
-							swfSource = url;
-						loadSwf(swfSource);
-					} else if (url.search("http://") != -1) {
-						var testRequest:URLRequest = new URLRequest(url);
-						var testLoader:URLLoader = new URLLoader();
-						testLoader.load(testRequest);
-						testLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, onHttpStatus);
-					} else {
-						loadSwf(SWF_SOURCE);
-					}
-				}
-			} catch (e:Error) {
-				log(e.message);
-				loadSwf(SWF_SOURCE);
-			}
-		} else {
-			loadSwf(SWF_SOURCE);
+		var appDirectory:File = File.applicationDirectory;
+		var files:Array = appDirectory.getDirectoryListing();
+		var currentFileName:String = PathUtils.getFileName(this.loaderInfo.url);
+		for each (var file:File in files) {
+			if (file.isDirectory || file.name == currentFileName || file.extension.toLowerCase() != "swf")
+				continue;
+			if (loadLocalSwf(file))
+				return;
 		}
+
+		if (!LAUNCHER_CONFIG_FILE.exists) {
+			log.debug("Launcher config file does not exist: " + LAUNCHER_CONFIG_FILE.nativePath);
+			loadVanillaSwf();
+			return;
+		}
+
+		var fs:FileStream = new FileStream();
+		try {
+			fs.open(LAUNCHER_CONFIG_FILE, FileMode.READ);
+			var jsonConfig:Object = JSON.parse(fs.readUTFBytes(fs.bytesAvailable));
+			if ("SwfRemoteUrl" in jsonConfig) {
+				var url:String = jsonConfig["SwfRemoteUrl"];
+				if (url.search("file://") != -1) {
+					var swfFile:File = new File(url.replace("file://", ""));
+					if (!swfFile.exists) {
+						log.debug("SwfRemoteUrl file does not exist: " + swfFile.nativePath);
+						loadVanillaSwf();
+						return;
+					}
+					if (loadLocalSwf(swfFile))
+						return;
+				} else if (url.search("http://") != -1 || url.search("https://") != -1) {
+					var testRequest:URLRequest = new URLRequest(url);
+					var testLoader:URLLoader = new URLLoader();
+					testLoader.load(testRequest);
+					testLoader.addEventListener(HTTPStatusEvent.HTTP_STATUS, onTestHttpStatus);
+					return;
+				}
+			}
+		} catch (e:Error) {
+			log.debug(e.message);
+		} finally {
+			fs.close();
+		}
+		loadVanillaSwf();
 	}
 
 	private function onUncaughtError(e:UncaughtErrorEvent):void {
@@ -249,14 +295,14 @@ public class AstrofluxSteam extends Sprite {
 		} else {
 			error += e.error.toString();
 		}
-		log("onUncaughtError: " + e.error.getStackTrace());
+		log.debug("onUncaughtError: " + e.error.getStackTrace());
 	}
 
 	private function onChildLoadComplete():void {
 		stage.removeEventListener("enterFrame", update);
 		stage.nativeWindow.removeEventListener("resize", resize);
 		createStarlingChild();
-		log("created starling child");
+		log.debug("created starling child");
 		addChild(childSWF);
 		childSWF.addEventListener("exitgame", onExit);
 		delayedFunctionCall(10 * 60, function ():void {
@@ -295,7 +341,7 @@ public class AstrofluxSteam extends Sprite {
 	}
 
 	private function processCommandLine(e:InvokeEvent):void {
-		log("Arguments: " + e.arguments);
+		log.debug("Arguments: " + e.arguments);
 		for (var i:int = 0; i < e.arguments.length; i++) {
 			var appIdArg:String = e.arguments[i];
 			if ("-appid" !== appIdArg) {
@@ -308,20 +354,14 @@ public class AstrofluxSteam extends Sprite {
 		}
 	}
 
-	private function log(text:String):void {
-		tf.appendText(text + "\n");
-		tf.scrollV = tf.maxScrollV;
-		trace(text);
-	}
-
 	public function testRestartAppIfNecessary(code:uint):void {
 		if (!code) {
-			log("FRESteamWorkTest: -appid requires argument");
+			log.debug("FRESteamWorkTest: -appid requires argument");
 			NativeApplication.nativeApplication.exit(1);
 		}
 
 		if (steamworks.restartAppIfNecessary(code)) {
-			log("App started outside of Steam with no app_id.txt: Steam will restart");
+			log.debug("App started outside of Steam with no app_id.txt: Steam will restart");
 			NativeApplication.nativeApplication.exit(0);
 		}
 	}
@@ -357,11 +397,11 @@ public class AstrofluxSteam extends Sprite {
 				}
 			}
 		}
-		log("Incoming: " + e.req_type);
+		log.debug("Incoming: " + e.req_type);
 	}
 
 	private function onExit(e:Event = null):void {
-		log("Exiting application, cleaning up");
+		log.debug("Exiting application, cleaning up");
 		if (childSWF) {
 			childSWF.removeEventListener("exitgame", onExit);
 			removeChild(childSWF);
