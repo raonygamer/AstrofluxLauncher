@@ -341,6 +341,9 @@ public class AstrofluxDesktop extends Sprite {
 			childSWF.removeEventListener("exitgame", onExit);
 			removeChild(childSWF);
 		}
+		if (log) {
+			log.close();
+		}
 		NativeApplication.nativeApplication.removeEventListener("exiting", onExit);
 		NativeApplication.nativeApplication.exit();
 	}

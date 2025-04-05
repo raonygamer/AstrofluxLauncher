@@ -421,6 +421,9 @@ public class AstrofluxSteam extends Sprite {
 			steamworks.removeEventListener(SteamEvent.STEAM_RESPONSE, handleSteamEvent);
 			steamworks.dispose();
 		}
+		if (log) {
+			log.close();
+		}
 		NativeApplication.nativeApplication.removeEventListener("exiting", onExit);
 		NativeApplication.nativeApplication.exit();
 	}

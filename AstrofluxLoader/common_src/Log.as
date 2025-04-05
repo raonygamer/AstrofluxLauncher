@@ -35,5 +35,9 @@ public class Log {
 
         return new Log(file);
     }
+
+    public function close():void {
+        logStream.close();
+    }
 }
 }
