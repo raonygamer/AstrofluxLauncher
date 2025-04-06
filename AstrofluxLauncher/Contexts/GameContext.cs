@@ -137,10 +137,21 @@ namespace AstrofluxLauncher.Contexts {
         
         #endregion
         #region Static Functions
+
+        public static string GetSWFName(GameType type)
+        {
+            return type switch
+            {
+                GameType.Steam => "Astroflux.swf",
+                GameType.Itch => "AstrofluxDesktop.swf",
+                _ => "Unknown"
+            };
+        }
+        
         public static string FormatGamePath(Environment.SpecialFolder folder, GameType type) {
             return type switch {
-                GameType.Steam => Path.Combine(Environment.GetFolderPath(folder), AstrofluxSteamPathPart),
-                GameType.Itch => Path.Combine(Environment.GetFolderPath(folder), AstrofluxItchPathPart),
+                GameType.Steam => Launcher.Instance.Config.Config.CustomSteamFilePath ?? Path.Combine(Environment.GetFolderPath(folder), AstrofluxSteamPathPart),
+                GameType.Itch => Launcher.Instance.Config.Config.CustomItchFilePath ?? Path.Combine(Environment.GetFolderPath(folder), AstrofluxItchPathPart),
                 _ => "Unknown"
             };
         }

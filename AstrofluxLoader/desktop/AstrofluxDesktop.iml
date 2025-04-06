@@ -3,7 +3,7 @@
   <component name="FlexBuildConfigurationManager" active="AstrofluxDesktop">
     <configurations>
       <configuration name="AstrofluxDesktop" target-platform="Desktop" pure-as="true" main-class="AstrofluxDesktop" output-file="AstrofluxDesktop.swf" output-folder="$MODULE_DIR$/../out/production/AstrofluxDesktop">
-        <dependencies target-player="50.0">
+        <dependencies>
           <entries>
             <entry library-name="common_src" library-level="project">
               <dependency linkage="Include" />

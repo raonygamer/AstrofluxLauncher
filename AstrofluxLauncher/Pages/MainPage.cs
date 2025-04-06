@@ -1,6 +1,8 @@
 ﻿using AstrofluxLauncher.Common;
+using AstrofluxLauncher.Contexts;
 using AstrofluxLauncher.UI;
 using AstrofluxLauncher.Utils;
+using SharpFileDialog;
 
 namespace AstrofluxLauncher.Pages;
 
@@ -23,6 +25,27 @@ public class MainPage : ItemListSelectPageBase
                 };
                 
                 var gameState = drawer.Launcher.GameContext.GetState(gameType);
+                if (gameState is GameState.NotInstalled)
+                {
+                    if (!NativeFileDialog.PickFolder(null, out var path))
+                        break;
+                    if (!Directory.Exists(path) ||
+                        !File.Exists(Path.Combine(path, GameContext.GetSWFName(gameType))))
+                        break;
+
+                    if (gameType == GameType.Steam)
+                    {
+                        drawer.Launcher.Config.Config.CustomSteamFilePath = Path.Combine(path, GameContext.GetSWFName(gameType));
+                    }
+                    else
+                    {
+                        drawer.Launcher.Config.Config.CustomItchFilePath = Path.Combine(path, GameContext.GetSWFName(gameType));
+                    }
+                    drawer.Launcher.Config.Save();
+                    await ComposePage(drawer, null);
+                    break;
+                }
+                
                 if (gameState is (GameState.InstalledCanBePatched or GameState.InstalledPatched or GameState.InstalledPatchedOutdated))
                     await drawer.ChangePage(gameState is (GameState.InstalledCanBePatched or GameState.InstalledPatchedOutdated) ? "should_patch_page" : "client_selector_page", true, new() {
                         { "GameType", gameType },
@@ -52,7 +75,7 @@ public class MainPage : ItemListSelectPageBase
                 new(
                     "steam_game", 
                     $"Astroflux Steam ({GetGameStateText(steamGameState)})", 
-                    steamGameState is (GameState.NotInstalled or GameState.InstalledCannotBePatched), 
+                    steamGameState is (GameState.InstalledCannotBePatched), 
                     false)
                 {
                     HoverBackColor = GetHoverGameStateBackColor(steamGameState), 
@@ -63,7 +86,7 @@ public class MainPage : ItemListSelectPageBase
                 new(
                     "itch_game", 
                     $"Astroflux Itch.io ({GetGameStateText(itchGameState)})", 
-                    itchGameState is (GameState.NotInstalled or GameState.InstalledCannotBePatched), 
+                    itchGameState is (GameState.InstalledCannotBePatched), 
                     false) 
                 {
                     HoverBackColor = GetHoverGameStateBackColor(itchGameState), 
@@ -87,7 +110,7 @@ public class MainPage : ItemListSelectPageBase
             GameState.InstalledPatchedOutdated => "Installed, patched, outdated patches",
             GameState.InstalledCanBePatched => "Installed, can be patched",
             GameState.InstalledCannotBePatched => "Installed, cannot be patched",
-            _ => "Not installed"
+            _ => "Could not find, please pick game folder manually"
         };
     }
 
@@ -111,7 +134,7 @@ public class MainPage : ItemListSelectPageBase
             GameState.InstalledPatchedOutdated => ConsoleColor.Black,
             GameState.InstalledCanBePatched => ConsoleColor.Black,
             GameState.InstalledCannotBePatched => ConsoleColor.Red,
-            _ => ConsoleColor.Red
+            _ => ConsoleColor.White
         };
     }
     
