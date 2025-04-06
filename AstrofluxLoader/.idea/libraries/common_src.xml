@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="common_src" type="flex">
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$/common_src" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

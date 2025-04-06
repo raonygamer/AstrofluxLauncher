@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" filepath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/steam/AstrofluxSteam.iml" filepath="$PROJECT_DIR$/steam/AstrofluxSteam.iml" />
-    </modules>
-  </component>
-</project>

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact name="AstrofluxDesktop">
-    <output-path>$PROJECT_DIR$/artifacts</output-path>
-    <root id="root">
-      <element id="file-copy" path="$PROJECT_DIR$/out/production/AstrofluxDesktop/AstrofluxDesktop.swf" />
-    </root>
-  </artifact>
-</component>

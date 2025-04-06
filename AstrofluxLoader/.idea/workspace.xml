@@ -10,9 +10,79 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daab5955-fef5-4e57-aae2-ce0156b8f4ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.AstrofluxLauncher/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.AstrofluxLauncher/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.AstrofluxLauncher/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.idea.AstrofluxLauncher/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/AstrofluxLauncher.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Common/Crc64.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Common/Input.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Common/LauncherInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Common/Log.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Contexts/GameContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Launcher.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Models/Config.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Models/SelectorItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/BlankPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/ClientSelectorPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/ExitQuestionPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/ItemListSelectPageBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/MainPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/ProfilerPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/ShouldPatchQuestionPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Pages/TextPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Properties/PublishProfiles/FolderProfile.pubxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/UI/AbstractPage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/UI/PageAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/UI/PageDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Utils/CRC.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Utils/GameState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Utils/GameType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Utils/GameVersion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Utils/LauncherConfig.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncher/Utils/Util.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncherUpdater/AstrofluxLauncherUpdater.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AstrofluxLauncherUpdater/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/AstrofluxDesktop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/AstrofluxSteam.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/flexCompiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/common_src.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/All.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/AstrofluxDesktop.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/AstrofluxSteam.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/artifacts/Astroflux.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/artifacts/AstrofluxDesktop.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/BackgroundBitmap.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/LoadingBitmap.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/Log.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/PathUtils.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/Popup.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/assets/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common_src/assets/loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/AstrofluxDesktop.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/AstrofluxDesktop.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/src/application.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/AstrofluxSteam.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/lib/FRESteamWorks.ane" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/src/AstrofluxSteam.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam/src/application.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_appid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxDesktop/AstrofluxDesktop.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Loaders/AstrofluxSteam/Astroflux.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../default_crc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/AstrofluxDesktop.as" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/AstrofluxSteam.as" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +113,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "new-launcher",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/bravo/OneDrive/Documentos/GitHub/AstrofluxLauncher/AstrofluxLoader/desktop/src/application.xml",
@@ -98,6 +168,7 @@
       <workItem from="1743868083508" duration="1358000" />
       <workItem from="1743869464553" duration="1505000" />
       <workItem from="1743873059221" duration="1131000" />
+      <workItem from="1743966906750" duration="87000" />
     </task>
     <servers />
   </component>
