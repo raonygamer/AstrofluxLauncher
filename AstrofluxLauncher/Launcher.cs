@@ -99,10 +99,18 @@ namespace AstrofluxLauncher
             StartDrawLine = Console.CursorTop;
 
             await (LayeredPageDrawers[1]?.ChangePage("main_page") ?? Task.CompletedTask);
-            while (true) {
-                await EarlyUpdate();
-                await Update();
-                await LateUpdate();
+            while (true)
+            {
+                try
+                {
+                    await EarlyUpdate();
+                    await Update();
+                    await LateUpdate();
+                }
+                catch (Exception e)
+                {
+                    Log.DebugLine($"Exception: {e}");
+                }
             }
         }
 
