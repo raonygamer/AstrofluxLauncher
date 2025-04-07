@@ -1,9 +1,9 @@
 {
   "name": "astrofluxlauncher",
   "version": "1.0.0",
-  "description": "An Electron application with React and TypeScript",
+  "description": "A Astroflux client launcher and some other utilities.",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "ryd3v",
   "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",
@@ -42,6 +42,7 @@
     "prettier": "^3.5.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "sass-embedded": "^1.86.3",
     "typescript": "^5.8.2",
     "vite": "^6.2.3"
   }

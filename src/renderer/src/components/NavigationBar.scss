@@ -1,0 +1,42 @@
+.navigation-bar-root {
+    height: 100%;
+    width: 150px;
+    background-color: var(--even-darker-gray);
+    border-radius: 10px;
+}
+
+.navigation-bar-items {
+    :first-child {
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+
+    :last-child {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
+
+.navigation-bar-item {
+    width: 100%;
+    height: 50px;
+    background-color: var(--even-darker-gray);
+    filter: brightness(80%);
+    transition: 0.1s filter ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        filter: brightness(75%);
+    }
+}
+
+.navigation-bar-item-text {
+    width: 50%;
+    font-family: "DAIDRR";
+    font-size: 13px;
+    color: white;
+    text-align: center;
+    user-select: none;
+}
